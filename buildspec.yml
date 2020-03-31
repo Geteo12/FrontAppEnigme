@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+    # Get Chrome Information
+      - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+      - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+      - apt-get -y update
+      - apt-get -y install google-chrome-stable
+      # Install dependencies needed for running tests
+      - npm install
+
+      # Upgrade AWS CLI to the latest version
+      - pip install --upgrade awscli
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm run prodbuild
+  post_build:
+    commands:
+      - echo Test started `date`
+      - npm test
+      - npm run e2e
+      - aws s3 cp --recursive dist/angularcloudproject/ s3://$S3_BUCKET/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
