@@ -19,7 +19,4 @@ phases:
       - npm run prodbuild
   post_build:
     commands:
-      - echo Test started `date`
-      - npm test
-      - npm run e2e
       - aws s3 cp --recursive dist/angularcloudproject/ s3://$S3_BUCKET/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
