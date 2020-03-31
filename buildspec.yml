@@ -19,4 +19,4 @@ phases:
       - npm run prodbuild
   post_build:
     commands:
-      - aws s3 cp --recursive dist/frontAppEnigme/ s3://frontappenigme/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      - aws s3 cp --recursive dist/frontAppEnigme/ s3://front-app-enigme/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
