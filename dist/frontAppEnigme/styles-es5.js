@@ -1,31 +1,29 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["styles"], {
   /***/
-  "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./src/styles.scss":
-  /*!********************************************************************************************************************************************************************************************************************!*\
-    !*** ./node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!./node_modules/postcss-loader/src??embedded!./node_modules/sass-loader/dist/cjs.js??ref--13-3!./src/styles.scss ***!
-    \********************************************************************************************************************************************************************************************************************/
+  "../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../node_modules/postcss-loader/src/index.js?!../node_modules/sass-loader/dist/cjs.js?!./src/styles.scss":
+  /*!***********************************************************************************************************************************************************************************************************************!*\
+    !*** ../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../node_modules/postcss-loader/src??embedded!../node_modules/sass-loader/dist/cjs.js??ref--13-3!./src/styles.scss ***!
+    \***********************************************************************************************************************************************************************************************************************/
 
   /*! no static exports found */
 
   /***/
   function node_modulesAngularDevkitBuildAngularSrcAngularCliFilesPluginsRawCssLoaderJsNode_modulesPostcssLoaderSrcIndexJsNode_modulesSassLoaderDistCjsJsSrcStylesScss(module, exports) {
-    module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2p1bGllbi1wcm8vc2l0ZS1lbmlnbWUvRnJvbnRBcHBFbmlnbWUvc3JjL3N0eWxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUFBIiwiZmlsZSI6InNyYy9zdHlsZXMuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cbiJdfQ== */", '', '']];
+    module.exports = [[module.i, "/* You can add global styles to this file, and also import other style files */\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2Fwc2lkZS1rZXZpbi9CdXJlYXUvQXBwbGlFbmlnbWVBcHNpZGUvRnJvbnRBcHBFbmlnbWUvc3JjL3N0eWxlcy5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLDhFQUFBIiwiZmlsZSI6InNyYy9zdHlsZXMuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFlvdSBjYW4gYWRkIGdsb2JhbCBzdHlsZXMgdG8gdGhpcyBmaWxlLCBhbmQgYWxzbyBpbXBvcnQgb3RoZXIgc3R5bGUgZmlsZXMgKi9cbiJdfQ== */", '', '']];
     /***/
   },
 
   /***/
-  "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
-  /*!****************************************************************************!*\
-    !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
-    \****************************************************************************/
+  "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
+  /*!*****************************************************************************!*\
+    !*** ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+    \*****************************************************************************/
 
   /*! no static exports found */
 
   /***/
   function node_modulesStyleLoaderDistRuntimeInjectStylesIntoStyleTagJs(module, exports, __webpack_require__) {
     "use strict";
-
-    var stylesInDom = {};
 
     var isOldIE = function isOldIE() {
       var memo;
@@ -67,80 +65,69 @@
       };
     }();
 
-    function listToStyles(list, options) {
-      var styles = [];
-      var newStyles = {};
+    var stylesInDom = [];
+
+    function getIndexByIdentifier(identifier) {
+      var result = -1;
+
+      for (var i = 0; i < stylesInDom.length; i++) {
+        if (stylesInDom[i].identifier === identifier) {
+          result = i;
+          break;
+        }
+      }
+
+      return result;
+    }
+
+    function modulesToDom(list, options) {
+      var idCountMap = {};
+      var identifiers = [];
 
       for (var i = 0; i < list.length; i++) {
         var item = list[i];
         var id = options.base ? item[0] + options.base : item[0];
-        var css = item[1];
-        var media = item[2];
-        var sourceMap = item[3];
-        var part = {
-          css: css,
-          media: media,
-          sourceMap: sourceMap
+        var count = idCountMap[id] || 0;
+        var identifier = "".concat(id, " ").concat(count);
+        idCountMap[id] = count + 1;
+        var index = getIndexByIdentifier(identifier);
+        var obj = {
+          css: item[1],
+          media: item[2],
+          sourceMap: item[3]
         };
 
-        if (!newStyles[id]) {
-          styles.push(newStyles[id] = {
-            id: id,
-            parts: [part]
+        if (index !== -1) {
+          stylesInDom[index].references++;
+          stylesInDom[index].updater(obj);
+        } else {
+          stylesInDom.push({
+            identifier: identifier,
+            updater: addStyle(obj, options),
+            references: 1
           });
-        } else {
-          newStyles[id].parts.push(part);
         }
+
+        identifiers.push(identifier);
       }
 
-      return styles;
-    }
-
-    function addStylesToDom(styles, options) {
-      for (var i = 0; i < styles.length; i++) {
-        var item = styles[i];
-        var domStyle = stylesInDom[item.id];
-        var j = 0;
-
-        if (domStyle) {
-          domStyle.refs++;
-
-          for (; j < domStyle.parts.length; j++) {
-            domStyle.parts[j](item.parts[j]);
-          }
-
-          for (; j < item.parts.length; j++) {
-            domStyle.parts.push(addStyle(item.parts[j], options));
-          }
-        } else {
-          var parts = [];
-
-          for (; j < item.parts.length; j++) {
-            parts.push(addStyle(item.parts[j], options));
-          }
-
-          stylesInDom[item.id] = {
-            id: item.id,
-            refs: 1,
-            parts: parts
-          };
-        }
-      }
+      return identifiers;
     }
 
     function insertStyleElement(options) {
       var style = document.createElement('style');
+      var attributes = options.attributes || {};
 
-      if (typeof options.attributes.nonce === 'undefined') {
+      if (typeof attributes.nonce === 'undefined') {
         var nonce = true ? __webpack_require__.nc : undefined;
 
         if (nonce) {
-          options.attributes.nonce = nonce;
+          attributes.nonce = nonce;
         }
       }
 
-      Object.keys(options.attributes).forEach(function (key) {
-        style.setAttribute(key, options.attributes[key]);
+      Object.keys(attributes).forEach(function (key) {
+        style.setAttribute(key, attributes[key]);
       });
 
       if (typeof options.insert === 'function') {
@@ -178,7 +165,7 @@
     }();
 
     function applyToSingletonTag(style, index, remove, obj) {
-      var css = remove ? '' : obj.css; // For old IE
+      var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
 
       /* istanbul ignore if  */
 
@@ -207,6 +194,8 @@
 
       if (media) {
         style.setAttribute('media', media);
+      } else {
+        style.removeAttribute('media');
       }
 
       if (sourceMap && btoa) {
@@ -264,45 +253,43 @@
     }
 
     module.exports = function (list, options) {
-      options = options || {};
-      options.attributes = typeof options.attributes === 'object' ? options.attributes : {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+      options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
       // tags it will allow on a page
 
       if (!options.singleton && typeof options.singleton !== 'boolean') {
         options.singleton = isOldIE();
       }
 
-      var styles = listToStyles(list, options);
-      addStylesToDom(styles, options);
+      list = list || [];
+      var lastIdentifiers = modulesToDom(list, options);
       return function update(newList) {
-        var mayRemove = [];
+        newList = newList || [];
 
-        for (var i = 0; i < styles.length; i++) {
-          var item = styles[i];
-          var domStyle = stylesInDom[item.id];
+        if (Object.prototype.toString.call(newList) !== '[object Array]') {
+          return;
+        }
 
-          if (domStyle) {
-            domStyle.refs--;
-            mayRemove.push(domStyle);
+        for (var i = 0; i < lastIdentifiers.length; i++) {
+          var identifier = lastIdentifiers[i];
+          var index = getIndexByIdentifier(identifier);
+          stylesInDom[index].references--;
+        }
+
+        var newLastIdentifiers = modulesToDom(newList, options);
+
+        for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+          var _identifier = lastIdentifiers[_i];
+
+          var _index = getIndexByIdentifier(_identifier);
+
+          if (stylesInDom[_index].references === 0) {
+            stylesInDom[_index].updater();
+
+            stylesInDom.splice(_index, 1);
           }
         }
 
-        if (newList) {
-          var newStyles = listToStyles(newList, options);
-          addStylesToDom(newStyles, options);
-        }
-
-        for (var _i = 0; _i < mayRemove.length; _i++) {
-          var _domStyle = mayRemove[_i];
-
-          if (_domStyle.refs === 0) {
-            for (var j = 0; j < _domStyle.parts.length; j++) {
-              _domStyle.parts[j]();
-            }
-
-            delete stylesInDom[_domStyle.id];
-          }
-        }
+        lastIdentifiers = newLastIdentifiers;
       };
     };
     /***/
@@ -319,9 +306,15 @@
 
   /***/
   function srcStylesScss(module, exports, __webpack_require__) {
+    var api = __webpack_require__(
+    /*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */
+    "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+
     var content = __webpack_require__(
-    /*! !../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../node_modules/postcss-loader/src??embedded!../node_modules/sass-loader/dist/cjs.js??ref--13-3!./styles.scss */
-    "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./src/styles.scss");
+    /*! !../../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../../node_modules/postcss-loader/src??embedded!../../node_modules/sass-loader/dist/cjs.js??ref--13-3!./styles.scss */
+    "../node_modules/@angular-devkit/build-angular/src/angular-cli-files/plugins/raw-css-loader.js!../node_modules/postcss-loader/src/index.js?!../node_modules/sass-loader/dist/cjs.js?!./src/styles.scss");
+
+    content = content.__esModule ? content["default"] : content;
 
     if (typeof content === 'string') {
       content = [[module.i, content, '']];
@@ -330,16 +323,10 @@
     var options = {};
     options.insert = "head";
     options.singleton = false;
-
-    var update = __webpack_require__(
-    /*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */
-    "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
-
-    if (content.locals) {
-      module.exports = content.locals;
-    }
+    var update = api(content, options);
+    var exported = content.locals ? content.locals : {};
+    module.exports = exported;
     /***/
-
   },
 
   /***/
@@ -353,7 +340,7 @@
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /home/julien-pro/site-enigme/FrontAppEnigme/src/styles.scss */
+    /*! /home/apside-kevin/Bureau/AppliEnigmeApside/FrontAppEnigme/src/styles.scss */
     "./src/styles.scss");
     /***/
   }
