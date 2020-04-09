@@ -1,12 +1,21 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="formulaire">
+  <div class="image">
+    <img src="../assets/img/EGA-circle-logo-BW.png" width="90" height="90" alt="">
+    <p>Bienvenue sur <b>EnigmA</b>!</p>
+  </div>
+  <div class="alerteConnexion">
+    Vous devez posséder un compte pour pouvoir accèder aux énigmes.
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group" [ngClass]="{'has-error': invalidMail()}" >
         <label for="email" class="control-label">Adresse Mail:</label>
         <input 
         type="text" 
-        class="form-control col-15" 
+        class="form-control col-10" 
         id="email"
         formControlName="email"
-        placeholder="votre@mail.com"
+        placeholder="Votre Adresse Mail"
         required
         [(ngModel)]="users.email">
         <p *ngIf="invalidMail()" id="email_error" class="help-block">Adresse Mail non valide.</p>
@@ -17,7 +26,7 @@
       class="form-control col-10" 
       id="pseudo"
       formControlName="pseudo"
-      placeholder="Pseudo"
+      placeholder="Le nom que les autres joueurs verront"
       required
       [(ngModel)]="users.pseudo">
       <p *ngIf="invalidPseudo()" id="pseudo_error" class="help-block">Pseudo déjà utilisé.</p>
@@ -33,8 +42,10 @@
       [(ngModel)]="users.mdp">
       <p *ngIf="invalidMdp()" id="mdp_error" class="help-block">Mot de passe non valide.</p>
     </div>
-    <div class="form-group has-error col-6">
-        <button type="submit" (click)="saveUser()" class="btn btn-primary">S'inscrire</button>
+    <div class="form-group has-error">
+        <button type="submit" (click)="saveUser()" class="btn btn-secondary btn-lg btn-block">S'inscrire</button>
     </div>
     
   </form>
+
+</div>

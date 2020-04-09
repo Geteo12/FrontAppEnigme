@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const baseUrl = 'http://localhost:4201'; 
+const baseUrl = 'http://localhost:4200/'; 
 
 @Injectable(
   {
@@ -14,7 +14,7 @@ export class UserService {
 
 
   create(data) {
-    return this.http.post(baseUrl, data);
+    return this.http.post(baseUrl+"newUser", data);
   }
 
   test(){

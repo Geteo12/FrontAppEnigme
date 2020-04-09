@@ -1,12 +1,12 @@
 import { __decorate } from "tslib";
 import { Injectable } from '@angular/core';
-const baseUrl = 'http://localhost:4201';
+const baseUrl = 'http://localhost:4200/';
 let UserService = class UserService {
     constructor(http) {
         this.http = http;
     }
     create(data) {
-        return this.http.post(baseUrl, data);
+        return this.http.post(baseUrl + "newUser", data);
     }
     test() {
         return console.log("ON EST DANS LE USERSERVICE");

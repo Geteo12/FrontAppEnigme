@@ -24,9 +24,9 @@ let CreationUtilisateurComponent = class CreationUtilisateurComponent {
     }
     ngOnInit() {
         this.loginForm = this.fb.group({
-            email: ['', Validators.required, Validators.email],
+            email: ['', Validators.required],
             pseudo: ['', Validators.required],
-            mdp: ['', Validators.required, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')],
+            mdp: ['', Validators.required],
         });
     }
     saveUser() {
@@ -39,6 +39,7 @@ let CreationUtilisateurComponent = class CreationUtilisateurComponent {
             .subscribe(response => {
             console.log(response);
         }, error => {
+            console.log(data);
             console.log(error);
         });
     }

@@ -1,63 +1,60 @@
-<!-- Toolbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <button class="navbar-toggler" type="button" 
-    data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <a class="navbar-brand" href="#">
-    <img src="../assets/img/point_interrogation.png" width="30" height="30" alt=""> EnigmA
-  </a>
+<html>
+  <body>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Enigme</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Classement</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Mon Compte</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <!-- Toolbar -->
 
-<div class="content" role="main">
+      <nav class="navbar navbar-expand-lg navbar-dark text-uppercase col-10">
+        <button class="navbar-toggler" type="button" 
+          data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-  <!-- Highlight Card -->
-  <div class="card highlight-card card-small" >
-    <img src="../assets/img/point_interrogation.png" width="90" height="90" alt="">
-    <span>{{ title }} est en Construction!</span>
-  </div>
 
-  <!-- Next Steps -->
-    <input type="hidden" #selection>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
-  <div class="card-container">
-    <div class="card card-small" routerLink="newUser">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
-      <span>Inscription</span>
-    </div>
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="image">
+              <a href="#">
+                <img src="../assets/img/EGA-logo-complet.png" width="400" height="250" alt="">
+              </a>
+            </li>
+            <li class="menu decalageGauche decalageBas nav-item active col-3">
+              <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="menu nav-item decalageBas col-3">
+              <a class="nav-link" href="#">Enigmes</a>
+            </li>
+            <li class="menu nav-item decalageBas col-3">
+              <a class="nav-link" href="#">Classement</a>
+            </li>
+            <li class="menu nav-item decalageBas col-4">
+              <a class="nav-link" href="newUser">Inscription</a>
+            </li>
+            <li class="menu nav-item decalageBas radiusDroit col-3">
+              <a class="nav-link" href="#">Connexion</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-    <div class="card card-small">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /></svg>
-      <span>Connexion</span>
-    </div>
-  </div>
+        
+      <p class="paragraphe"> Combien d'énigmes arriverez-vous à résoudre?</p>
+      <div class="content" role="main">
 
-<router-outlet></router-outlet>
+       <div>
+            
+          </div>
 
-  <!-- Footer -->
-  <footer>
-    EnigmA © Julien&Kévin 2020&nbsp;
-    <a href="https://google.fr/" target="_blank" rel="noopener"> Retourner sur Google.
-    </a>
-</footer>
+        <router-outlet></router-outlet>
 
-</div>
+          <!-- Footer -->
+
+
+      </div>
+      <footer class="footer">
+        <b>EnigmA</b> © Julien&Kévin 2020&nbsp;
+        <a href="https://google.fr/" target="_blank" rel="noopener"> Retourner sur Google.
+        </a>
+    </footer>
+  </body>
+</html>

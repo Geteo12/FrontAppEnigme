@@ -44,9 +44,9 @@ export class CreationUtilisateurComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({  // Crée une instance de FormGroup
-      email:['', Validators.required, Validators.email],
+      email:['', Validators.required], //, Validators.email
       pseudo: ['', Validators.required],                   // Crée une instance de FormControl
-      mdp: ['', Validators.required, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')],                   // Crée une instance de FormControl
+      mdp: ['', Validators.required],     //, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')              // Crée une instance de FormControl
     });
     
   }
@@ -64,6 +64,7 @@ export class CreationUtilisateurComponent implements OnInit {
           console.log(response);
         },
         error => {
+          console.log(data);
           console.log(error);
         });
   }

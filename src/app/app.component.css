@@ -1,27 +1,45 @@
-:host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .image{
+    margin: -23px 15px 0 0;
+    position: absolute;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
+  .menu{
+    color: whitesmoke;
+    background-color: black;
+    padding: 9px;
+    padding-right: 10px;
+    margin-bottom:1px;
+    border: 1px solid transparent;
+    font-size: 20px;
+    
   }
 
-  p {
-    margin: 0;
+  html{
+    background-color: ghostwhite;
+    font-family: 'Source Sans Pro',sans-serif,Helvetica,Arial,sans-serif;
   }
 
-  .spacer {
-    flex: 1;
+
+  body{
+    background-color:ghostwhite;
+    font-family: 'Source Sans Pro',sans-serif,Helvetica,Arial,sans-serif;
+    line-height: 1.42857143;
+    font-size: 16px;
+  }
+
+  .decalageGauche{
+    margin-left: 371px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .decalageBas{
+    margin-top: 50px;
+  }
+
+  .radiusDroit{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
   }
 
   .toolbar {
@@ -32,7 +50,7 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #55aee9;
     color: white;
     font-weight: 600;
   }
@@ -41,13 +59,13 @@
     margin: 0 16px;
   }
 
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
-    max-width: 960px;
-    flex-direction: column;
-    align-items: center;
+  .h1 {
+    font-family: 'Source Sans Pro',sans-serif,Helvetica,Arial,sans-serif;
+    font-size: 65px;
+    font-weight: 900, bolder;
+    text-transform: uppercase;
+    margin-top: 50px;
+    text-align: center;
   }
 
   .card-container {
@@ -60,7 +78,7 @@
   .card {
     border-radius: 4px;
     border: 1px solid #eee;
-    background-color: #fafafa;
+    background-color: #55aee9;
     height: 40px;
     width: 200px;
     margin: 0 8px 16px;
@@ -94,19 +112,17 @@
   .card-container .card:not(.highlight-card):hover .material-icons path {
     fill: rgb(105, 103, 103);
   }
-
-  .card.highlight-card {
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-    border: none;
-    width: auto;
-    min-width: 30%;
-    position: relative;
+  .content {
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
   }
 
-  .card.card.highlight-card span {
-    margin-left: 60px;
+  
+  .nav-item:hover{
+    background-color: rgb(44, 42, 42);
   }
 
   a,
@@ -120,51 +136,22 @@
     color: #125699;
   }
 
-  .circle-link {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    margin: 8px;
-    background-color: white;
-    border: 1px solid #eeeeee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: 1s ease-out;
-  }
-
-  .circle-link:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  footer {
-    margin-top: 8px;
-    display: flex;
-    align-items: center;
+  .footer {
+    margin-top: 30px;
+    padding: 30px;
+    text-align: center;
     line-height: 20px;
+    background-color: black;
+    color: white;
+    font-family: 'Source Sans Pro',sans-serif,Helvetica,Arial,sans-serif;
+
   }
 
-  footer a {
-    display: flex;
-    align-items: center;
-  }
-  /* Responsive Styles */
-  @media screen and (max-width: 767px) {
-
-    .card-container>*:not(.circle-link),
-    .terminal {
-      width: 100%;
-    }
-
-    .card:not(.highlight-card) {
-      height: 16px;
-      margin: 8px 0;
-    }
-
-    .card.highlight-card span {
-      margin-left: 72px;
-    }
+  .paragraphe {
+    font-family: 'Source Sans Pro',sans-serif,Helvetica,Arial,sans-serif;
+    font-size: 35px;
+    font-weight: 800, bolder;
+    text-transform: uppercase;
+    margin-top: 50px;
+    text-align: center;
   }
