@@ -6,7 +6,7 @@ const baseUrl = 'http://localhost:3000/';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'x-www-form-urlencoded'
+    'Content-Type':  'x-www-form-urlencoded', 'Js'
   })
 };
 
@@ -42,7 +42,7 @@ export class UserService {
   create(data) {
     const donnees = data
     alert("BEFORE POST: "+donnees.mdp)
-    this.http.post('http://localhost:3000/register/', data, httpOptions)
+    this.http.post('http://localhost:4200/api/register/', data, httpOptions)
     .subscribe(
       (response) => alert("IN POST, RESPONSE: "+data.mdp),
       (error) => alert(error)
