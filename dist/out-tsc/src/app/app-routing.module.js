@@ -2,9 +2,11 @@ import { __decorate } from "tslib";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CreationUtilisateurComponent } from './creation-utilisateur/creation-utilisateur.component';
+import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
 const routes = [
     { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: 'newUser', component: CreationUtilisateurComponent }
+    { path: 'register', component: CreationUtilisateurComponent },
+    { path: 'login', component: ConnexionUtilisateurComponent }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

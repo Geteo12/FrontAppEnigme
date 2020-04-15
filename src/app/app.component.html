@@ -18,20 +18,20 @@
                 <img src="../assets/img/EGA-logo-complet.png" width="400" height="250" alt="">
               </a>
             </li>
-            <li class="menu decalageGauche decalageBas nav-item active col-3">
-              <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+            <li class="menu decalageGauche decalageBas nav-item col-3" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['#']">Accueil</a>
             </li>
-            <li class="menu nav-item decalageBas col-3">
+            <li class="menu nav-item decalageBas col-3" routerLinkActive="active">
               <a class="nav-link" href="#">Enigmes</a>
             </li>
-            <li class="menu nav-item decalageBas col-3">
+            <li class="menu nav-item decalageBas col-3" routerLinkActive="active"> 
               <a class="nav-link" href="#">Classement</a>
             </li>
-            <li class="menu nav-item decalageBas col-4">
-              <a class="nav-link" href="newUser">Inscription</a>
+            <li class="menu nav-item decalageBas col-4" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/register']">Inscription</a>
             </li>
-            <li class="menu nav-item decalageBas radiusDroit col-3">
-              <a class="nav-link" href="#">Connexion</a>
+            <li class="menu nav-item decalageBas radiusDroit col-3" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/login']">Connexion</a>
             </li>
           </ul>
         </div>

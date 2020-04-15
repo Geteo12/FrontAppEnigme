@@ -1,7 +1,7 @@
 import { __decorate } from "tslib";
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
-let CreationUtilisateurComponent = class CreationUtilisateurComponent {
+let ConnexionUtilisateurComponent = class ConnexionUtilisateurComponent {
     constructor(fb, userService) {
         this.fb = fb;
         this.userService = userService;
@@ -16,35 +16,16 @@ let CreationUtilisateurComponent = class CreationUtilisateurComponent {
     invalidPseudo() {
         return (this.submitted && this.loginForm.controls.pseudo.errors != null); // ==?
     }
-    invalidMail() {
-        return (this.submitted && this.loginForm.controls.email.errors != null);
-    }
     invalidMdp() {
         return (this.submitted && this.loginForm.controls.mdp.errors != null);
     }
     ngOnInit() {
         this.loginForm = this.fb.group({
-            email: ['', Validators.required],
             pseudo: ['', Validators.required],
             mdp: ['', Validators.required],
         });
     }
-    saveUser() {
-        const data = {
-            email: this.loginForm.get("email").value,
-            pseudo: this.loginForm.get("pseudo").value,
-            mdp: this.loginForm.get("mdp").value
-        };
-        alert("EMAIL: " + data.email);
-        this.userService.create(data);
-    }
-    newUser() {
-        this.users = {
-            email: '',
-            pseudo: '',
-            mdp: ''
-        };
-    }
+    saveUser() { }
     onSubmit() {
         this.submitted = true;
         if (this.loginForm.invalid == true) {
@@ -55,12 +36,12 @@ let CreationUtilisateurComponent = class CreationUtilisateurComponent {
         }
     }
 };
-CreationUtilisateurComponent = __decorate([
+ConnexionUtilisateurComponent = __decorate([
     Component({
-        selector: 'app-creation-utilisateur',
-        templateUrl: './creation-utilisateur.component.html',
-        styleUrls: ['./creation-utilisateur.component.css']
+        selector: 'app-connexion-utilisateur',
+        templateUrl: './connexion-utilisateur.component.html',
+        styleUrls: ['./connexion-utilisateur.component.css']
     })
-], CreationUtilisateurComponent);
-export { CreationUtilisateurComponent };
-//# sourceMappingURL=creation-utilisateur.component.js.map
+], ConnexionUtilisateurComponent);
+export { ConnexionUtilisateurComponent };
+//# sourceMappingURL=connexion-utilisateur.component.js.map

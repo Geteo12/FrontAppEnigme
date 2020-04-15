@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CreationUtilisateurComponent } from './creation-utilisateur/creation-utilisateur.component';
+import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import { CreationUtilisateurComponent } from './creation-utilisateur/creation-ut
     AppComponent,
     NavBarComponent,
     CreationUtilisateurComponent,
+    ConnexionUtilisateurComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { CreationUtilisateurComponent } from './creation-utilisateur/creation-ut
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

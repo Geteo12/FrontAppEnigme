@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CreationUtilisateurComponent } from './creation-utilisateur/creation-utilisateur.component';
+import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
+import { UserService } from './services/user.service';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -15,6 +17,7 @@ AppModule = __decorate([
             AppComponent,
             NavBarComponent,
             CreationUtilisateurComponent,
+            ConnexionUtilisateurComponent
         ],
         imports: [
             BrowserModule,
@@ -23,7 +26,7 @@ AppModule = __decorate([
             FormsModule,
             HttpClientModule
         ],
-        providers: [],
+        providers: [UserService],
         bootstrap: [AppComponent]
     })
 ], AppModule);

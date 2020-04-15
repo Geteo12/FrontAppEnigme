@@ -12,7 +12,7 @@
         <label for="email" class="control-label">Adresse Mail:</label>
         <input 
         type="text" 
-        class="form-control col-10" 
+        class="form-control" 
         id="email"
         formControlName="email"
         placeholder="Votre Adresse Mail"
@@ -23,7 +23,7 @@
     <div class="form-group" [ngClass]="{ 'has-error': invalidPseudo() }">
       <label for="pseudo" class="control-label">Pseudo:</label>
       <input type="text" 
-      class="form-control col-10" 
+      class="form-control" 
       id="pseudo"
       formControlName="pseudo"
       placeholder="Le nom que les autres joueurs verront"
@@ -34,7 +34,7 @@
     <div class="form-group" [ngClass]="{ 'has-error': invalidMdp() }">
       <label for="mdp" class="control-label">Mot de passe:</label>
       <input type="password" 
-      class="form-control col-10" 
+      class="form-control" 
       id="mdp"
       formControlName="mdp"
       placeholder="*********"
