@@ -6,7 +6,7 @@ const baseUrl = 'http://localhost:3000/';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'x-www-form-urlencoded', 'Js'
+    'Content-Type':  'x-www-form-urlencoded'
   })
 };
 
