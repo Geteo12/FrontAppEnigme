@@ -57,5 +57,15 @@ export class UserService {
     return request
   }
 
+  public signin(user : UserInfoModel) : Observable<any>{
+    const base = this.http.post('/login', user)
+    const request = base.pipe(
+      map((user : UserInfoModel ) => {
+        return user
+      })
+    )
+    return request
+  }
+
 
 }

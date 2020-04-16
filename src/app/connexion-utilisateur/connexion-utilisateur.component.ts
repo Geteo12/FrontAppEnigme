@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
+import { UserInfoModel } from '../models/UserInfoModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connexion-utilisateur',
@@ -23,7 +25,7 @@ export class ConnexionUtilisateurComponent implements OnInit {
 
   
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
    }
 
    invalidPseudo()
@@ -45,7 +47,21 @@ export class ConnexionUtilisateurComponent implements OnInit {
     
   }
 
-  saveUser(){}
+  connectUser(){
+    let user = new UserInfoModel()
+    user.email = this.loginForm.get("email").value,
+    user.pseudo = this.loginForm.get("pseudo").value,
+    user.mdp = this.loginForm.get("mdp").value
+    
+    this.userService.signin(user).subscribe(
+      () => {
+        this.router.navigateByUrl('/')
+      },
+      err => {
+        alert(err)
+      }
+    );
+  }
 
 
   onSubmit(){
