@@ -1,6 +1,6 @@
-{  "/api/*": {  
-      "target": "http://localhost:3000",
+{  "/register": {  
+      "target": "http://localhost:3000/register",
           "secure": false,
-              "pathRewrite": {"^/api" : ""} 
+              "pathRewrite": {"^/register" : ""} 
    }
 }

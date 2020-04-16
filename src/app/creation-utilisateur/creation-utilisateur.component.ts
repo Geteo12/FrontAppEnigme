@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Config } from 'protractor';
+import { UserInfoModel } from '../models/UserInfoModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creation-utilisateur',
@@ -24,7 +26,7 @@ export class CreationUtilisateurComponent implements OnInit {
 
   
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
    }
 
    invalidPseudo()
@@ -53,13 +55,20 @@ export class CreationUtilisateurComponent implements OnInit {
   }
 
   saveUser(){
-    const data = {
-    email : this.loginForm.get("email").value,
-    pseudo : this.loginForm.get("pseudo").value,
-    mdp : this.loginForm.get("mdp").value
-    }
-    alert("EMAIL: "+data.email);
-    this.userService.create(data);
+    let user = new UserInfoModel()
+    user.email = this.loginForm.get("email").value,
+    user.pseudo = this.loginForm.get("pseudo").value,
+    user.mdp = this.loginForm.get("mdp").value
+    
+    this.userService.login(user).subscribe(
+      () => {
+        this.router.navigateByUrl('/login')
+      },
+      err => {
+        alert(err)
+        this.router.navigateByUrl('/')
+      }
+    );
   }
 
   newUser() {

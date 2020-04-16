@@ -1,12 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
+import { map } from 'rxjs/operators'
+import { Router } from '@angular/router'
+import { UserInfoModel } from '../models/UserInfoModel';
+
+
+
+
+
+
 
 const baseUrl = 'http://localhost:3000/'; 
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'x-www-form-urlencoded'
+    'Content-Type':  'application/json'
   })
 };
 
@@ -19,9 +28,8 @@ const httpOptions = {
 )
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router : Router) { }
 
-  configUrl = '../../assets/proxy.conf.json'
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
@@ -39,14 +47,15 @@ export class UserService {
       'Something bad happened; please try again later.');
   };
 
-  create(data) {
-    const donnees = data
-    alert("BEFORE POST: "+donnees.mdp)
-    this.http.post('http://localhost:4200/api/register/', data, httpOptions)
-    .subscribe(
-      (response) => alert("IN POST, RESPONSE: "+data.mdp),
-      (error) => alert(error)
+  public login (user : UserInfoModel): Observable<any> {
+    const base = this.http.post('/register', user)
+    const request = base.pipe(
+      map((user : UserInfoModel ) => {
+        return user
+      })
     )
+    return request
   }
+
 
 }
