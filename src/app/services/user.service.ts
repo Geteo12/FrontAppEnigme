@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, throwError, of } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
-import { UserInfoModel } from '../models/UserInfoModel';
+import { CompteModel } from '../models/CompteModel';
 
 
 
@@ -47,21 +47,21 @@ export class UserService {
       'Something bad happened; please try again later.');
   };
 
-  public login (user : UserInfoModel): Observable<any> {
-    const base = this.http.post('/register', user)
+  public register (compte : CompteModel): Observable<any> {
+    const base = this.http.post('/register', compte)
     const request = base.pipe(
-      map((user : UserInfoModel ) => {
-        return user
+      map((compte : CompteModel ) => {
+        return compte
       })
     )
     return request
   }
 
-  public signin(user : UserInfoModel) : Observable<any>{
-    const base = this.http.post('/login', user)
+  public signin(compte : CompteModel) : Observable<any>{
+    const base = this.http.post('/login', compte)
     const request = base.pipe(
-      map((user : UserInfoModel ) => {
-        return user
+      map((compte : CompteModel ) => {
+        return compte
       })
     )
     return request

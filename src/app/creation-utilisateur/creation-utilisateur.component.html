@@ -17,7 +17,7 @@
         formControlName="email"
         placeholder="Votre Adresse Mail"
         required
-        [(ngModel)]="users.email">
+        [(ngModel)]="credentials.email">
         <p *ngIf="invalidMail()" id="email_error" class="help-block">Adresse Mail non valide.</p>
       </div>
     <div class="form-group" [ngClass]="{ 'has-error': invalidPseudo() }">
@@ -28,7 +28,7 @@
       formControlName="pseudo"
       placeholder="Le nom que les autres joueurs verront"
       required
-      [(ngModel)]="users.pseudo">
+      [(ngModel)]="credentials.pseudo">
       <p *ngIf="invalidPseudo()" id="pseudo_error" class="help-block">Pseudo déjà utilisé.</p>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': invalidMdp() }">
@@ -39,11 +39,11 @@
       formControlName="mdp"
       placeholder="*********"
       required
-      [(ngModel)]="users.mdp">
+      [(ngModel)]="credentials.mdp">
       <p *ngIf="invalidMdp()" id="mdp_error" class="help-block">Mot de passe non valide.</p>
     </div>
     <div class="form-group has-error">
-        <button type="submit" (click)="saveUser()" class="btn btn-secondary btn-lg btn-block">S'inscrire</button>
+        <button type="submit" (click)="register()" class="btn btn-secondary btn-lg btn-block">S'inscrire</button>
     </div>
     
   </form>

@@ -1,12 +1,21 @@
 import { __decorate } from "tslib";
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { CompteModel } from '../models/CompteModel';
 let ConnexionUtilisateurComponent = class ConnexionUtilisateurComponent {
-    constructor(fb, userService) {
+    constructor(fb, userService, router, auth) {
         this.fb = fb;
         this.userService = userService;
+        this.router = router;
+        this.auth = auth;
         this.registered = false;
         this.submitted = false;
+        this.credentials = {
+            id: 0,
+            pseudo: '',
+            email: '',
+            mdp: ''
+        };
         this.users = {
             email: '',
             pseudo: '',
@@ -25,7 +34,25 @@ let ConnexionUtilisateurComponent = class ConnexionUtilisateurComponent {
             mdp: ['', Validators.required],
         });
     }
-    saveUser() { }
+    //Ne fonctionne pas
+    connectUser() {
+        let compte = new CompteModel();
+        compte.email = this.loginForm.get("email").value,
+            compte.pseudo = this.loginForm.get("pseudo").value,
+            compte.mdp = this.loginForm.get("mdp").value;
+        this.userService.signin(compte).subscribe(() => {
+            this.router.navigateByUrl('/');
+        }, err => {
+            alert(err);
+        });
+    }
+    login() {
+        this.auth.login(this.credentials).subscribe(() => {
+            this.router.navigateByUrl('/home');
+        }, err => {
+            console.error(err);
+        });
+    }
     onSubmit() {
         this.submitted = true;
         if (this.loginForm.invalid == true) {

@@ -16,7 +16,7 @@
         formControlName="pseudo"
         placeholder="Votre pseudo sur EnigmA"
         required
-        [(ngModel)]="users.pseudo">
+        [(ngModel)]="credentials.pseudo">
         <p *ngIf="invalidPseudo()" id="pseudo_error" class="help-block"></p>
       </div>
       <div class="form-group" [ngClass]="{ 'has-error': invalidMdp() }">
@@ -27,11 +27,11 @@
         formControlName="mdp"
         placeholder="*********"
         required
-        [(ngModel)]="users.mdp">
+        [(ngModel)]="credentials.mdp">
         <p *ngIf="invalidMdp()" id="mdp_error" class="help-block">Le pseudo et le mot de passe associé ne correspondent pas.</p>
       </div>
       <div class="form-group has-error">
-          <button type="submit" (click)="connectUser()" class="btn btn-secondary btn-lg btn-block">Se Connecter</button>
+          <button type="submit" (click)="login()" class="btn btn-secondary btn-lg btn-block">Se Connecter</button>
       </div>
       
     </form>

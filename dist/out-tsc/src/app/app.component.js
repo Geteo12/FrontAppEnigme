@@ -1,7 +1,8 @@
 import { __decorate } from "tslib";
 import { Component } from '@angular/core';
 let AppComponent = class AppComponent {
-    constructor() {
+    constructor(auth) {
+        this.auth = auth;
         this.title = 'EnigmA';
     }
 };

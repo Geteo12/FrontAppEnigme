@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Config } from 'protractor';
-import { UserInfoModel } from '../models/UserInfoModel';
+import { CompteModel } from '../models/CompteModel';
 import { Router } from '@angular/router';
+import { TokenPayload, AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-creation-utilisateur',
@@ -22,11 +23,18 @@ export class CreationUtilisateurComponent implements OnInit {
     mdp: ''
   };
 
+  credentials: TokenPayload = {
+    id: 0,
+    pseudo: "",
+    email: "",
+    mdp: ""
+  };
+
   loginForm: FormGroup;
 
   
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private auth: AuthenticationService) {
    }
 
    invalidPseudo()
@@ -54,19 +62,30 @@ export class CreationUtilisateurComponent implements OnInit {
     
   }
 
-  saveUser(){
-    let user = new UserInfoModel()
+  registerUser(){
+    let user = new CompteModel()
     user.email = this.loginForm.get("email").value,
     user.pseudo = this.loginForm.get("pseudo").value,
     user.mdp = this.loginForm.get("mdp").value
     
-    this.userService.login(user).subscribe(
+    this.userService.register(user).subscribe(
       () => {
         this.router.navigateByUrl('/login')
       },
       err => {
         alert(err)
         this.router.navigateByUrl('/')
+      }
+    );
+  }
+
+  register() {
+    this.auth.register(this.credentials).subscribe(
+      () => {
+        this.router.navigateByUrl("/login");
+      },
+      err => {
+        console.error(err);
       }
     );
   }

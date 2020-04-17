@@ -9,6 +9,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CreationUtilisateurComponent } from './creation-utilisateur/creation-utilisateur.component';
 import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion-utilisateur.component';
 import { UserService } from './services/user.service';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthGuardService } from './services/authguard.service';
+import { AccueilComponent } from './accueil/accueil.component';
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -17,7 +20,8 @@ AppModule = __decorate([
             AppComponent,
             NavBarComponent,
             CreationUtilisateurComponent,
-            ConnexionUtilisateurComponent
+            ConnexionUtilisateurComponent,
+            AccueilComponent
         ],
         imports: [
             BrowserModule,
@@ -26,7 +30,7 @@ AppModule = __decorate([
             FormsModule,
             HttpClientModule
         ],
-        providers: [UserService],
+        providers: [UserService, AuthenticationService, AuthGuardService],
         bootstrap: [AppComponent]
     })
 ], AppModule);

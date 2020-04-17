@@ -2,16 +2,17 @@ import { __decorate } from "tslib";
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
 const baseUrl = 'http://localhost:3000/';
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'x-www-form-urlencoded'
+        'Content-Type': 'application/json'
     })
 };
 let UserService = class UserService {
-    constructor(http) {
+    constructor(http, router) {
         this.http = http;
-        this.configUrl = '../../assets/proxy.conf.json';
+        this.router = router;
     }
     handleError(error) {
         if (error.error instanceof ErrorEvent) {
@@ -28,11 +29,19 @@ let UserService = class UserService {
         return throwError('Something bad happened; please try again later.');
     }
     ;
-    create(data) {
-        const donnees = data;
-        alert("BEFORE POST: " + donnees.mdp);
-        this.http.post('http://localhost:4200/api/register/', data, httpOptions)
-            .subscribe((response) => alert("IN POST, RESPONSE: " + data.mdp), (error) => alert(error));
+    register(compte) {
+        const base = this.http.post('/register', compte);
+        const request = base.pipe(map((compte) => {
+            return compte;
+        }));
+        return request;
+    }
+    signin(compte) {
+        const base = this.http.post('/login', compte);
+        const request = base.pipe(map((compte) => {
+            return compte;
+        }));
+        return request;
     }
 };
 UserService = __decorate([

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
-import { UserInfoModel } from '../models/UserInfoModel';
+import { CompteModel } from '../models/CompteModel';
 import { Router } from '@angular/router';
+import { TokenPayload, AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-connexion-utilisateur',
@@ -15,6 +16,13 @@ export class ConnexionUtilisateurComponent implements OnInit {
   registered=false;
   submitted = false;
 
+  credentials: TokenPayload = {
+    id: 0,
+    pseudo: '',
+    email: '',
+    mdp: ''
+  }
+
   users = {
     email: '',
     pseudo: '',
@@ -25,7 +33,7 @@ export class ConnexionUtilisateurComponent implements OnInit {
 
   
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private auth : AuthenticationService) {
    }
 
    invalidPseudo()
@@ -47,13 +55,14 @@ export class ConnexionUtilisateurComponent implements OnInit {
     
   }
 
+  //Ne fonctionne pas
   connectUser(){
-    let user = new UserInfoModel()
-    user.email = this.loginForm.get("email").value,
-    user.pseudo = this.loginForm.get("pseudo").value,
-    user.mdp = this.loginForm.get("mdp").value
+    let compte = new CompteModel()
+    compte.email = this.loginForm.get("email").value,
+    compte.pseudo = this.loginForm.get("pseudo").value,
+    compte.mdp = this.loginForm.get("mdp").value
     
-    this.userService.signin(user).subscribe(
+    this.userService.signin(compte).subscribe(
       () => {
         this.router.navigateByUrl('/')
       },
@@ -61,6 +70,17 @@ export class ConnexionUtilisateurComponent implements OnInit {
         alert(err)
       }
     );
+  }
+
+  login() {
+    this.auth.login(this.credentials).subscribe(
+      () => {
+        this.router.navigateByUrl('/home')
+      },
+      err => {
+        console.error(err)
+      }
+    )
   }
 
 

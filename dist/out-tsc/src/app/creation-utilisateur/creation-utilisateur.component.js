@@ -1,16 +1,25 @@
 import { __decorate } from "tslib";
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { CompteModel } from '../models/CompteModel';
 let CreationUtilisateurComponent = class CreationUtilisateurComponent {
-    constructor(fb, userService) {
+    constructor(fb, userService, router, auth) {
         this.fb = fb;
         this.userService = userService;
+        this.router = router;
+        this.auth = auth;
         this.registered = false;
         this.submitted = false;
         this.users = {
             email: '',
             pseudo: '',
             mdp: ''
+        };
+        this.credentials = {
+            id: 0,
+            pseudo: "",
+            email: "",
+            mdp: ""
         };
     }
     invalidPseudo() {
@@ -29,14 +38,24 @@ let CreationUtilisateurComponent = class CreationUtilisateurComponent {
             mdp: ['', Validators.required],
         });
     }
-    saveUser() {
-        const data = {
-            email: this.loginForm.get("email").value,
-            pseudo: this.loginForm.get("pseudo").value,
-            mdp: this.loginForm.get("mdp").value
-        };
-        alert("EMAIL: " + data.email);
-        this.userService.create(data);
+    registerUser() {
+        let user = new CompteModel();
+        user.email = this.loginForm.get("email").value,
+            user.pseudo = this.loginForm.get("pseudo").value,
+            user.mdp = this.loginForm.get("mdp").value;
+        this.userService.register(user).subscribe(() => {
+            this.router.navigateByUrl('/login');
+        }, err => {
+            alert(err);
+            this.router.navigateByUrl('/');
+        });
+    }
+    register() {
+        this.auth.register(this.credentials).subscribe(() => {
+            this.router.navigateByUrl("/login");
+        }, err => {
+            console.error(err);
+        });
     }
     newUser() {
         this.users = {
