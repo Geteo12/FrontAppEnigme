@@ -1,0 +1,39 @@
+.alerteConnexion{
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+    color: #8a6d3b;
+    padding: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 4px;
+}
+
+#mdp_error, #pseudo_error, #email_error{
+    color: red;
+}
+
+.formulaire{
+    background-color:rgb(41, 40, 40);
+    border-color: #171717;
+    color: #ffffff;
+    padding: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 10px;
+    
+}
+
+.image{
+    align-content: center;
+    text-align: center;
+}

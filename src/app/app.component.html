@@ -19,7 +19,7 @@
               </a>
             </li>
             <li class="menu decalageGauche decalageBas nav-item col-3" routerLinkActive="active">
-              <a class="nav-link" [routerLink]="['#']">Accueil</a>
+              <a class="nav-link" [routerLink]="['/home']">Accueil</a>
             </li>
             <li class="menu nav-item decalageBas col-3" routerLinkActive="active">
               <a class="nav-link" href="#">Enigmes</a>
@@ -27,27 +27,18 @@
             <li class="menu nav-item decalageBas col-3" routerLinkActive="active"> 
               <a class="nav-link" href="#">Classement</a>
             </li>
-            <li class="menu nav-item decalageBas col-4" routerLinkActive="active">
-              <a class="nav-link" [routerLink]="['#']">Inscription</a>
+            <li *ngIf="!auth.isLoggedIn()" class="menu nav-item decalageBas col-4" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/register']">Inscription</a>
             </li>
-            <li class="menu nav-item decalageBas radiusDroit col-3" routerLinkActive="active">
-              <a class="nav-link" [routerLink]="['#']">Connexion</a>
+            <li *ngIf="!auth.isLoggedIn()" class="menu nav-item decalageBas radiusDroit col-3" routerLinkActive="active">
+              <a class="nav-link" [routerLink]="['/login']">Connexion</a>
             </li>
           </ul>
         </div>
       </nav>
-
-        
-      
+      <p class="paragraphe"> Combien d'énigmes arriverez-vous à résoudre?</p>
       <div class="content" role="main">
-        <p class="paragraphe"> Combien d'énigmes arriverez-vous à résoudre?</p>
-       <div>
-            
-          </div>
-
         <router-outlet></router-outlet>
-
-          <!-- Footer -->
       </div>
       <footer class="footer">
         <b>EnigmA</b> © Julien&Kévin 2020&nbsp;
@@ -56,3 +47,4 @@
     </footer>
   </body>
 </html>
+
