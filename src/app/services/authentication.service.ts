@@ -64,26 +64,29 @@ export class AuthenticationService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    return this.http.post(`/register`, user)
+    return this.http.post('/api/register', user)
   }
 
   public login(user: TokenPayload): Observable<any> {
-    const base = this.http.post(`/login`, user)
-
+    /*const base = this.http.post(`/api/login`, user)
+    alert("ON EST DANS LOGIN DE AUTHENTICATION SERVICE")
     const request = base.pipe(
       map((data: TokenResponse) => {
+        alert("ON EST DANS LE MAP DE LOGIN DANS AUTHENTICATION SERVICE")
         if (data.token) {
+          alert("LE DATA TOKEN EXISTE")
           this.saveToken(data.token)
         }
+        alert("On a finit le map et on renvoie data: "+data)
         return data
       })
     )
-
-    return request
+    return request*/
+    return this.http.post('/api/login', user)
   }
 
   public profile(): Observable<any> {
-    return this.http.get(`/users/profile`, {
+    return this.http.get(`/api/profile`, {
       headers: { Authorization: ` ${this.getToken()}` }
     })
   }

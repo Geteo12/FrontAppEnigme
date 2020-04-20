@@ -8,16 +8,16 @@
     </div>
   
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group" [ngClass]="{ 'has-error': invalidPseudo() }">
-        <label for="pseudo" class="control-label">Pseudo:</label>
+      <div class="form-group" [ngClass]="{ 'has-error': invalidMail() }">
+        <label for="email" class="control-label">Adresse Mail:</label>
         <input type="text" 
         class="form-control" 
-        id="pseudo"
-        formControlName="pseudo"
-        placeholder="Votre pseudo sur EnigmA"
+        id="email"
+        formControlName="email"
+        placeholder="Votre adresse mail sur EnigmA"
         required
-        [(ngModel)]="credentials.pseudo">
-        <p *ngIf="invalidPseudo()" id="pseudo_error" class="help-block"></p>
+        [(ngModel)]="credentials.email">
+        <p *ngIf="invalidMail()" id="email_error" class="help-block"></p>
       </div>
       <div class="form-group" [ngClass]="{ 'has-error': invalidMdp() }">
         <label for="mdp" class="control-label">Mot de passe:</label>

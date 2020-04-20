@@ -62,6 +62,7 @@ export class CreationUtilisateurComponent implements OnInit {
     
   }
 
+  /*
   registerUser(){
     let user = new CompteModel()
     user.email = this.loginForm.get("email").value,
@@ -78,6 +79,7 @@ export class CreationUtilisateurComponent implements OnInit {
       }
     );
   }
+  */
 
   register() {
     this.auth.register(this.credentials).subscribe(

@@ -36,9 +36,9 @@ export class ConnexionUtilisateurComponent implements OnInit {
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private auth : AuthenticationService) {
    }
 
-   invalidPseudo()
+   invalidMail()
    {
-     return (this.submitted && this.loginForm.controls.pseudo.errors != null); // ==?
+     return (this.submitted && this.loginForm.controls.email.errors != null);
    }
  
    invalidMdp()
@@ -49,35 +49,21 @@ export class ConnexionUtilisateurComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({  // Crée une instance de FormGroup
-      pseudo: ['', Validators.required],                   // Crée une instance de FormControl
+      email: ['', Validators.required],                   // Crée une instance de FormControl
       mdp: ['', Validators.required],     //, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')              // Crée une instance de FormControl
     });
     
   }
 
-  //Ne fonctionne pas
-  connectUser(){
-    let compte = new CompteModel()
-    compte.email = this.loginForm.get("email").value,
-    compte.pseudo = this.loginForm.get("pseudo").value,
-    compte.mdp = this.loginForm.get("mdp").value
-    
-    this.userService.signin(compte).subscribe(
-      () => {
-        this.router.navigateByUrl('/')
-      },
-      err => {
-        alert(err)
-      }
-    );
-  }
-
   login() {
+    alert("ON EST DANS LOGIN DE CONNEXION TS")
     this.auth.login(this.credentials).subscribe(
       () => {
+        alert("ON EST DANS LOGIN DE CONNEXION TS: LE SUBSCRIBE A FONCTIONNE")
         this.router.navigateByUrl('/home')
       },
       err => {
+        alert("ON EST DANS LOGIN DE CONNEXION TS: ERREUR")
         console.error(err)
       }
     )
