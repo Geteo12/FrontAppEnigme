@@ -1,4 +1,4 @@
-<div class="enigmeContainer">
+<div class="enigmeContainer col-16">
     <div class="title">
         Et ils appellent ça une mine. Une mine!
     </div>
@@ -6,6 +6,8 @@
         C'est trois nains. Ils vont à la mine.
         Le premier prend une pelle, le deuxième prend une pioche, que prend le troisième?
     </div>
+</div>
+<div class="reponseContainer">
     <div class="answer">
         <form>
             <div class="form-group">
@@ -14,13 +16,15 @@
               </label>
               <input type="text" id="reponse" class="form-control">
             </div>
-            <button class="btn btn-secondary btn-lg btn-block" (click)="appear()">Avoir un indice</button>
-            <ng-container *ngIf="show">
-                <p class="indice">Ne vous creusez pas trop la tête!</p>
-            </ng-container>
         </form>
     </div>
     <div class="bouton">
         <button class="btn btn-secondary btn-lg btn-block">Soumettre la réponse</button>
     </div>
+</div>
+<div class="indiceContainer">
+    <div class="title">Liste des indices</div>
+    <ng-container>
+        <p class="indice">Ne vous creusez pas trop la tête!</p>
+    </ng-container>
 </div>
