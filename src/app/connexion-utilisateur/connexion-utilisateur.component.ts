@@ -56,14 +56,11 @@ export class ConnexionUtilisateurComponent implements OnInit {
   }
 
   login() {
-    alert("ON EST DANS LOGIN DE CONNEXION TS")
     this.auth.login(this.credentials).subscribe(
       () => {
-        alert("ON EST DANS LOGIN DE CONNEXION TS: LE SUBSCRIBE A FONCTIONNE")
         this.router.navigateByUrl('/home')
       },
       err => {
-        alert("ON EST DANS LOGIN DE CONNEXION TS: ERREUR")
         console.error(err)
       }
     )

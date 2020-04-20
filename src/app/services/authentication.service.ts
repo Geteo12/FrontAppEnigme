@@ -68,7 +68,7 @@ export class AuthenticationService {
   }
 
   public login(user: TokenPayload): Observable<any> {
-    /*const base = this.http.post(`/api/login`, user)
+    const base = this.http.post(`/api/login`, user)
     alert("ON EST DANS LOGIN DE AUTHENTICATION SERVICE")
     const request = base.pipe(
       map((data: TokenResponse) => {
@@ -81,8 +81,8 @@ export class AuthenticationService {
         return data
       })
     )
-    return request*/
-    return this.http.post('/api/login', user)
+    return request
+    //return this.http.post('/api/login', user)
   }
 
   public profile(): Observable<any> {
