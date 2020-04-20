@@ -69,15 +69,11 @@ export class AuthenticationService {
 
   public login(user: TokenPayload): Observable<any> {
     const base = this.http.post(`/api/login`, user)
-    alert("ON EST DANS LOGIN DE AUTHENTICATION SERVICE")
     const request = base.pipe(
       map((data: TokenResponse) => {
-        alert("ON EST DANS LE MAP DE LOGIN DANS AUTHENTICATION SERVICE")
         if (data.token) {
-          alert("LE DATA TOKEN EXISTE")
           this.saveToken(data.token)
         }
-        alert("On a finit le map et on renvoie data: "+data)
         return data
       })
     )
