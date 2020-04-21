@@ -13,6 +13,14 @@ export interface UserDetails {
   iat: number
 }
 
+export interface EnigmeDetails {
+  id: number
+  intitule: string
+  points: string
+  reponse: string
+  description: string
+}
+
 interface TokenResponse {
   token: string
 }
@@ -81,12 +89,16 @@ export class AuthenticationService {
     //return this.http.post('/api/login', user)
   }
 
-  public profile(): Observable<any> {
-    return this.http.get(`/api/profile`, {
+  public getEnigme(): Observable<any> {
+    return this.http.get(`/api/enigme`)/*, {
       headers: { Authorization: ` ${this.getToken()}` }
-    })
+    })*/
   }
-
+/*
+  public verifReponse(): Observable<any> {
+    return this.http.
+  }
+  */
   public logout(): void {
     this.token = ''
     window.localStorage.removeItem('usertoken')

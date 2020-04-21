@@ -12,6 +12,7 @@ import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service'
 import { AuthGuardService } from './services/authguard.service';
 import { AccueilComponent } from './accueil/accueil.component'
+import { EnigmeComponent } from './enigme/enigme.component'
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AccueilComponent } from './accueil/accueil.component'
     NavBarComponent,
     CreationUtilisateurComponent,
     ConnexionUtilisateurComponent,
-    AccueilComponent
+    AccueilComponent,
+    EnigmeComponent
   ],
   imports: [
     BrowserModule,
