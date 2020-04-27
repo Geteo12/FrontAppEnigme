@@ -21,6 +21,12 @@ export interface EnigmeDetails {
   description: string
 }
 
+export interface IndiceDetails {
+  id: number
+  intitule : string
+  idEnigme : number
+}
+
 interface TokenResponse {
   token: string
 }
@@ -94,6 +100,10 @@ export class AuthenticationService {
       headers: { Authorization: ` ${this.getToken()}` }
     })*/
   }
+  
+  public getIndice() : Observable<any>{
+    return this.http.get(`/api/indice`)
+  } 
 /*
   public verifReponse(): Observable<any> {
     return this.http.

@@ -5,6 +5,9 @@
                 {{ details?.intitule }}
             </div>
             <div class="intitule">
+                {{details?.points}} points
+            </div>
+            <div class="intitule">
                 {{ details?.description }}
             </div>
         </div>
@@ -26,8 +29,12 @@
     </div>
     <div class="indiceContainer col-3">
         <div class="littleTitle">Liste des indices</div>
-        <ng-container>
-            <p class="indice">Ne vous creusez pas trop la tête!</p>
-        </ng-container>
+        <div *ngFor="let indice of indiceTab">
+                <ul>
+                    <li>{{ indice.intitule }}</li>
+                </ul>
+        </div>
     </div>
 </div>
+
+ <!--*ngFor="let indiceDetails of indiceTab"-->

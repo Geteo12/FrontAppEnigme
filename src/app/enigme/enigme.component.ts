@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService, EnigmeDetails } from '../services/authentication.service';
+import { AuthenticationService, EnigmeDetails, IndiceDetails } from '../services/authentication.service';
 import { FormBuilder, Form, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,10 @@ import { Router } from '@angular/router';
 export class EnigmeComponent implements OnInit {
   
   details: EnigmeDetails
+
+  indices : any
+
+  indiceTab : Array<IndiceDetails>
 
   reponse : String
   reponseForm : FormGroup
@@ -29,7 +33,15 @@ export class EnigmeComponent implements OnInit {
       err => {
         console.error(err)
       }
-    )
+    );
+    this.auth.getIndice().subscribe(
+      data => {
+        this.indiceTab = data
+      },
+      err => {
+        console.error(err)
+      }
+    );
   }
 
   verifReponse(){
