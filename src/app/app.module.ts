@@ -11,7 +11,8 @@ import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion
 import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service'
 import { AuthGuardService } from './services/authguard.service';
-import { AccueilComponent } from './accueil/accueil.component'
+import { AccueilComponent } from './accueil/accueil.component';
+import { MonCompteComponent } from './mon-compte/mon-compte.component'
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AccueilComponent } from './accueil/accueil.component'
     NavBarComponent,
     CreationUtilisateurComponent,
     ConnexionUtilisateurComponent,
-    AccueilComponent
+    AccueilComponent,
+    MonCompteComponent
   ],
   imports: [
     BrowserModule,

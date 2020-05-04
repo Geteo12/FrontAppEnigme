@@ -1,0 +1,38 @@
+.formulaire{
+    background-color:rgb(41, 40, 40);
+    border-color: #171717;
+    color: #ffffff;
+    padding: 15px;
+    padding-right: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 1px rgba(21, 97, 44, 0.075);
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    
+}
+
+.image{
+    align-content: center;
+    text-align: center;
+}
+
+.pseudoChange{
+    visibility: hidden;
+}
+
+.mdpChange{
+    visibility: hidden;
+}
+
+.alert{
+    visibility: hidden;
+}
+
+.greenAlert{
+    visibility: hidden;
+}

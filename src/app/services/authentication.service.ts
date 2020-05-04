@@ -92,4 +92,16 @@ export class AuthenticationService {
     window.localStorage.removeItem('usertoken')
     this.router.navigateByUrl('/')
   }
+
+  public getUser(): Observable<any> {
+    return this.http.get(`/api/monCompte`)
+  }
+
+  public modifUtilisateur(data){
+    return this.http.put(`/api/modifUtilisateur`, data)
+  }
+
+  public modifMdp(data){
+    return this.http.put(`/api/modifMdp`, data)
+  }
 }
