@@ -11,8 +11,10 @@ import { ConnexionUtilisateurComponent } from './connexion-utilisateur/connexion
 import { UserService } from './services/user.service';
 import { AuthenticationService } from './services/authentication.service'
 import { AuthGuardService } from './services/authguard.service';
-import { AccueilComponent } from './accueil/accueil.component'
+import { AccueilComponent } from './accueil/accueil.component';
+import { MonCompteComponent } from './mon-compte/mon-compte.component'
 import { EnigmeComponent } from './enigme/enigme.component'
+
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { EnigmeComponent } from './enigme/enigme.component'
     CreationUtilisateurComponent,
     ConnexionUtilisateurComponent,
     AccueilComponent,
+    MonCompteComponent,
     EnigmeComponent
   ],
   imports: [

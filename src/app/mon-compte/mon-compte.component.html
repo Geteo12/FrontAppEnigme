@@ -1,0 +1,84 @@
+<div class="formulaire">
+    <div class="image">
+      <img src="../assets/img/EGA-circle-logo-BW.png" width="90" height="90" alt="">
+      <p class="h1">Détails du compte</p>
+    </div>
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col" class="invisible">AAAAAAAAAA</th>
+            <th scope="col" class="invisible">AAAAAAAAAA</th>
+            <th scope="col" class="invisible">AAAAAAAAAA</th>
+            <th scope="col">xxxx points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+                <div class="spinner-grow spinner-grow-sm" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+            </th>
+            <td>Adresse Mail :</td>
+            <td>{{details?.email}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">
+                <div class="spinner-grow spinner-grow-sm" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
+            </th>
+            <td>Pseudo : </td>
+            <td>{{details?.pseudo}}</td>
+            <td>
+                <input type="text" 
+                class="pseudoChange col-12" 
+                id="pseudo"
+                [(ngModel)]="users.pseudo"> 
+                <p></p>
+            </td>
+            <td>
+                <button type="submit" (click)="annulerModifPseudo()" id="pseudoChangeAnnuler" class="pseudoChange btn btn-secondary btn-sm">Annuler</button>
+                <p></p>
+                <button type="submit" (click)="modifPseudo(users.pseudo)" id="pseudoChangeValider" class="pseudoChange btn btn-secondary btn-sm">Valider</button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">
+                <div class="spinner-grow spinner-grow-sm" role="status">
+                    <span class="sr-only"></span>
+                  </div>
+            </th>
+            <td>Mot de Passe: </td>
+            <td>***********</td>
+            <td>
+                <input type="text" 
+            class="mdpChange col-12" 
+            id="mdp"
+            [(ngModel)]="users.mdp"> 
+            <p></p>
+            </td>
+            <td>
+                <button type="submit" (click)="annulerModifMdp()" id="mdpChangeAnnuler" class="mdpChange btn btn-secondary btn-sm">Annuler</button>
+                <p></p>
+            <button type="submit" (click)="modifMdp(users.mdp)" id="mdpChangeValider" class="mdpChange btn btn-secondary btn-sm">Valider</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="alert alert-warning alert-dismissible fade show" id="alert" role="alert">
+        <strong>Houston, on a un problème!</strong> Ce champ ne peut pas être vide.
+        <button type="button" (click)="closeAlert()" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+    
+        <button type="submit" (click)="affichageModifPseudo()" class="boutonPseudo btn btn-secondary btn-lg btn-block">Modifier le pseudo</button>   
+      <p></p>
+      <button type="submit" (click)="affichageModifMdp()" class="boutonMdp btn btn-secondary btn-lg btn-block">Modifier le mot de passe</button>
+  
+  </div>
