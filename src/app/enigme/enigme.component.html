@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="enigmeAndReponse col-9">
+        <div class="enigmeContainer">
+            <div class="title">
+                {{ details?.intitule }}
+            </div>
+            <div class="intitule">
+                {{details?.points}} points
+            </div>
+            <div class="intitule">
+                {{ details?.description }}
+            </div>
+        </div>
+        <div class="reponseContainer">
+            <div class="answer">
+                <form [formGroup]="reponseForm" name="reponseForm" (ng-submit)="verifReponse()">
+                    <div class="form-group">
+                    <label for="reponse">
+                        Réponse:
+                    </label>
+                    <input type="text" id="reponse" class="form-control" formControlName="reponse">
+                    </div>
+                </form>
+            </div>
+            <div class="bouton">
+                <button type="submit" (click)="verifReponse()" class="btn btn-secondary btn-lg btn-block">Soumettre la réponse</button>
+            </div>
+        </div>
+    </div>
+    <div class="indiceContainer col-3">
+        <div class="littleTitle">Liste des indices</div>
+        <div *ngFor="let indice of indiceTab">
+                <ul>
+                    <li>{{ indice.intitule }}</li>
+                </ul>
+        </div>
+    </div>
+</div>
+
+ <!--*ngFor="let indiceDetails of indiceTab"-->

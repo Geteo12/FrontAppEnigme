@@ -62,25 +62,6 @@ export class CreationUtilisateurComponent implements OnInit {
     
   }
 
-  /*
-  registerUser(){
-    let user = new CompteModel()
-    user.email = this.loginForm.get("email").value,
-    user.pseudo = this.loginForm.get("pseudo").value,
-    user.mdp = this.loginForm.get("mdp").value
-    
-    this.userService.register(user).subscribe(
-      () => {
-        this.router.navigateByUrl('/login')
-      },
-      err => {
-        alert(err)
-        this.router.navigateByUrl('/')
-      }
-    );
-  }
-  */
-
   register() {
     this.auth.register(this.credentials).subscribe(
       () => {

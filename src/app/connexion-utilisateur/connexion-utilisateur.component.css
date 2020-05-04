@@ -18,6 +18,8 @@
 }
 
 .formulaire{
+    max-width: 645px;
+    margin-left: 400px;
     background-color:rgb(41, 40, 40);
     border-color: #171717;
     color: #ffffff;

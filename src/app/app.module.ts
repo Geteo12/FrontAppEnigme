@@ -13,6 +13,8 @@ import { AuthenticationService } from './services/authentication.service'
 import { AuthGuardService } from './services/authguard.service';
 import { AccueilComponent } from './accueil/accueil.component';
 import { MonCompteComponent } from './mon-compte/mon-compte.component'
+import { EnigmeComponent } from './enigme/enigme.component'
+
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { MonCompteComponent } from './mon-compte/mon-compte.component'
     CreationUtilisateurComponent,
     ConnexionUtilisateurComponent,
     AccueilComponent,
-    MonCompteComponent
+    MonCompteComponent,
+    EnigmeComponent
   ],
   imports: [
     BrowserModule,
